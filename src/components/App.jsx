@@ -29,6 +29,19 @@ export const App = () => {
     return true;
   };
 
+  const editContact = updateContact => {
+    setContacts(prevContacts => {
+      return prevContacts.map(contact => {
+        if (contact.id === updateContact.id) {
+          const newContact = { ...contact, ...updateContact };
+          return newContact;
+        }
+        return contact;
+      });
+    });
+    // debugger;
+  };
+
   const deleteContact = contactId =>
     setContacts(prevState =>
       prevState.filter(contact => contact.id !== contactId)
@@ -52,6 +65,7 @@ export const App = () => {
           <Section title="Contacts">
             <ContactList
               contacts={filteredContacts}
+              onEditContact={editContact}
               onDeleteContact={deleteContact}
             />
           </Section>

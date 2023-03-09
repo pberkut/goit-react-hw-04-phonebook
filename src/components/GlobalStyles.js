@@ -37,8 +37,8 @@ img {
   height: auto;
 }
 ul {
-  /* padding: 0; */
+  padding: 0;
   margin: 0;
-  /* list-style: none; */
+  list-style: none;
 }
 `;

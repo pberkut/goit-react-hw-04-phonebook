@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 import { List } from './ContactList.styled';
 import { ContactItem } from '../ContactItem';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+export const ContactList = ({ contacts, onEditContact, onDeleteContact }) => {
   return (
     <div>
       <List>
-        {contacts.map(({ id, name, phone }) => (
+        {contacts.map((contact, idx) => (
           <ContactItem
-            key={id}
-            id={id}
-            name={name}
-            phone={phone}
+            key={contact.id}
+            contact={contact}
+            index={idx}
+            onEditContact={onEditContact}
             onDeleteContact={onDeleteContact}
           />
         ))}
