@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { GlobalStyle } from './GlobalStyles';
 import { Notify } from 'notiflix';
 import { Container } from './Container';
@@ -49,7 +49,11 @@ export const App = () => {
 
   const setFilterContacts = event => setFilter(event.currentTarget.value);
 
-  const filteredContacts = getFilteredArray(contacts, filter);
+  // const filteredContacts = getFilteredArray(contacts, filter);
+  const filteredContacts = useMemo(
+    () => getFilteredArray(contacts, filter),
+    [contacts, filter]
+  );
 
   return (
     <>
